@@ -1,4 +1,3 @@
-
 plugins {
     id 'java'
     id 'org.springframework.boot' version "3.2.3"
@@ -29,11 +28,12 @@ allprojects {
 
 subprojects {
     dependencies {
-//    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-//    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+        implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.boot:spring-boot-starter-validation")
         compileOnly("org.projectlombok:lombok")
-        runtimeOnly("com.mysql:mysql-connector-j")
+        runtimeOnly("com.mysql:mysql-connector-jdbc")
         annotationProcessor("org.projectlombok:lombok")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
@@ -64,11 +64,11 @@ jacoco {
 
 ext {
     excludedClasses = [
-        'com/grupo29/techflix/Application*', // Spring Boot application
-        'com/grupo29/techflix/model/*', // Spring Boot model
-        'com/grupo29/techflix/resource/repository/*', // Spring Boot repository
-        'com/grupo29/techflix/beans/*',
-        'com/grupo29/techflix/entrypoints/dto/*',
+            'com/grupo29/techflix/Application*', // Spring Boot application
+            'com/grupo29/techflix/model/*', // Spring Boot model
+            'com/grupo29/techflix/resource/repository/*', // Spring Boot repository
+            'com/grupo29/techflix/beans/*',
+            'com/grupo29/techflix/entrypoints/dto/*',
     ]
 }
 
