@@ -4,10 +4,10 @@ import com.grupo29.hackathon.model.quartos.Quarto;
 import com.grupo29.hackathon.resource.repository.entity.ReservaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface ReservaRepositorySpring extends JpaRepository<ReservaEntity, Long> {
 
-    boolean existsByQuarto(Quarto quarto);
+    List<ReservaEntity> findAllByQuarto(Quarto quarto);
 
-    @Override
-    boolean existsById(Long aLong);
 }
