@@ -1,11 +1,8 @@
 package com.grupo29.hackathon.useCase.reservas;
 
 import com.grupo29.hackathon.gateway.ReservaRepositoryGateway;
-import com.grupo29.hackathon.model.quartos.Quarto;
 import com.grupo29.hackathon.model.reservas.Reserva;
 import com.grupo29.hackathon.utils.FieldUtils;
-
-import java.util.List;
 
 public class CreateReservaUseCase {
 
@@ -16,10 +13,10 @@ public class CreateReservaUseCase {
         this.reservaRepository = reservaRepository;
     }
 
-    public Reserva create(Reserva reserva) {
+    public void create(Reserva reserva) {
 
-        if (isQuartoReservado(reserva)){
-
+        if (reservaRepository.isQuartoReservado(reserva)){
+            throw new RuntimeException("quarto já reservado");
         }
 
         Boolean validateFields = FieldUtils.areFieldsNotNull(
@@ -30,12 +27,8 @@ public class CreateReservaUseCase {
             throw new RuntimeException("erro");
         }
 
-        return reservaRepository.create(reserva);
+        reservaRepository.create(reserva);
     }
 
-    private boolean isQuartoReservado(Reserva reserva) {
-
-        List<Reserva> reservas = reservaRepository.verificaReservaPorQuartoeData(reserva);
-    }
 
 }
