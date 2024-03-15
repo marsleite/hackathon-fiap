@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class Quarto {
+    private Long id;
     private Localidade localidade;
     private Predio predio;
     private TipoQuarto tipoQuarto;

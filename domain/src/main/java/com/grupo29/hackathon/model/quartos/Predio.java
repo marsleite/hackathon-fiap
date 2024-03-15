@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class Predio {
+    private Long id;
     private Localidade localidade;
     private List<Quarto> quartos;
 }
