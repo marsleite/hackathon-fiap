@@ -6,8 +6,9 @@ import java.util.List;
 
 @Data
 public class Localidade {
+    private Long id;
     private String nome;
-    private String endereco;
+    private Endereco endereco;
     private List<Amenidade> amenidades;
     private List<Predio> predios;
 }
