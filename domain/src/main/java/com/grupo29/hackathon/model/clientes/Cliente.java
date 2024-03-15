@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Data
 public class Cliente {
-    private UUID id;
+    private Long id;
     @NotNull
     private String nome;
     @NotNull
