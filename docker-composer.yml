@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  app:
+    image: app_reserva
+    ports:
+      - 8081:8081
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/<nome_do_banco_de_dados>
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=123456
+    depends_on:
+      - mysql
+  mysql:
+    platform: linux/x86_64
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: localhost
+      MYSQL_ROOT_PASSWORD: admin
+    ports:
+      - "3306:3306"
+volumes:
+  db_data:
