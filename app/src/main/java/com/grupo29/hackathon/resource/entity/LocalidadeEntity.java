@@ -10,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.util.Collections;
@@ -27,7 +26,8 @@ public class LocalidadeEntity {
 
   @OneToOne
   private EnderecoEntity endereco;
-  private Amenidade amenidades;
+  @OneToMany
+  private List<AmenidadeEntity> amenidades;
 
   @OneToMany
   private List<PredioEntity> predios;
@@ -36,17 +36,19 @@ public class LocalidadeEntity {
   @JoinColumn(name = "localidade_id")
   private List<QuartoEntity> quartos;
 
-    public LocalidadeEntity(Localidade localidade, Quarto quarto) {
+    public LocalidadeEntity(
+        Localidade localidade,
+        List<PredioEntity> prediosEntity,
+        List<QuartoEntity> quartosEntity
+    ) {
       this.id = localidade.getId();
       this.nome = localidade.getNome();
       this.endereco = new EnderecoEntity(localidade.getEndereco());
       this.amenidades = localidade.getAmenidades().stream()
-          .map(amenidade -> new AmenidadeEntity(amenidade))
+          .map(AmenidadeEntity::new)
           .collect(Collectors.toList());
-      this.predios = localidade.getPredios().stream()
-          .map(predio -> new PredioEntity(predio))
-          .collect(Collectors.toList());
-      this.quartos = Collections.singletonList(new QuartoEntity(quarto));
+      this.predios = prediosEntity;
+      this.quartos = quartosEntity;
     }
 
 }
