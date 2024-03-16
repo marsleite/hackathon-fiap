@@ -1,20 +1,25 @@
 package com.grupo29.hackathon.resource.gateway;
 
-import com.grupo29.hackathon.gateway.ClienteGatewayRepository;
+import com.grupo29.hackathon.gateway.ClienteRepositoryGateway;
 import com.grupo29.hackathon.model.clientes.Cliente;
+import com.grupo29.hackathon.resource.entity.clientes.ClienteEntity;
 import com.grupo29.hackathon.resource.sql.ClienteRepositorySpring;
+import com.grupo29.hackathon.resource.sql.DocumentoRepositorySpring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ClienteGatewayRepositoryImpl implements ClienteGatewayRepository {
+public class ClienteGatewayRepositoryImpl implements ClienteRepositoryGateway {
 
   @Autowired
   private ClienteRepositorySpring clienteRepositorySpring;
 
+  @Autowired
+  private DocumentoRepositorySpring documentoRepositorySpring;
+
   @Override
-  public Cliente create(Cliente quarto) {
-    return clienteRepositorySpring.save(quarto);
+  public Cliente create(Cliente cliente) {
+    return clienteRepositorySpring.save(new ClienteEntity(cliente));
   }
 
   @Override
@@ -23,8 +28,8 @@ public class ClienteGatewayRepositoryImpl implements ClienteGatewayRepository {
   }
 
   @Override
-  public Cliente update(Cliente quarto) {
-    return clienteRepositorySpring.save(quarto);
+  public Cliente update(Cliente cliente) {
+    return clienteRepositorySpring.save(cliente);
   }
 
   @Override

@@ -5,7 +5,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.grupo29.hackathon.gateway.QuartoGatewayRepository;
+import com.grupo29.hackathon.gateway.QuartoRepositoryGateway;
 import com.grupo29.hackathon.model.quartos.Quarto;
 import com.grupo29.hackathon.useCase.quartos.FindQuartoUseCase;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +16,7 @@ import org.mockito.MockitoAnnotations;
 
 public class FindQuartoUseCaseTest {
   @Mock
-  private QuartoGatewayRepository quartoGatewayRepository;
+  private QuartoRepositoryGateway quartoRepositoryGateway;
 
   @InjectMocks
   private FindQuartoUseCase findQuartoUseCase;
@@ -29,11 +29,11 @@ public class FindQuartoUseCaseTest {
   @Test
   public void shouldNotFindQuartoWhenInvalidIdIsProvided() {
     String id = "invalidId";
-    when(quartoGatewayRepository.findById(id)).thenReturn(null);
+    when(quartoRepositoryGateway.findById(Long.parseLong(id))).thenReturn(null);
 
     Quarto result = findQuartoUseCase.execute(id);
 
     assertEquals(null, result);
-    verify(quartoGatewayRepository, times(1)).findById(id);
+    verify(quartoRepositoryGateway, times(1)).findById(Long.parseLong(id));
   }
 }
