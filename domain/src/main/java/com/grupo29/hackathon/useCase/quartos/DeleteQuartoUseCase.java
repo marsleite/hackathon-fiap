@@ -6,11 +6,16 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
+@Component
 public class DeleteQuartoUseCase {
     private QuartoGatewayRepository quartoGatewayRepository;
 
-    public void execute(Quarto quarto) {
-        quartoGatewayRepository.delete(String.valueOf(quarto.getId()));
+    @Autowired
+    public DeleteQuartoUseCase(QuartoGatewayRepository quartoGatewayRepository) {
+        this.quartoGatewayRepository = quartoGatewayRepository;
+    }
+
+    public void execute(String id) {
+        quartoGatewayRepository.delete(id);
     }
 }

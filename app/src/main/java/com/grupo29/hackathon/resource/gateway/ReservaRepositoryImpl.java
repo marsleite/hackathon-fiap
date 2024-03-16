@@ -39,6 +39,24 @@ public class ReservaRepositoryImpl implements ReservaRepositoryGateway {
         return reserva;
     }
 
+    @Override
+    public void delete(String id) {
+        repo.deleteById(Long.valueOf(id));
+    }
+
+    @Override
+    public void update(Reserva reserva) {
+        repo.save(ReservaEntity.builder()
+                .cliente(reserva.getCliente())
+                .opcionais(reserva.getOpcionais())
+                .quartos(reserva.getQuartos())
+                .quantidadeHospedes(reserva.getQuantidadeHospedes())
+                .dataReserva(reserva.getDataReserva())
+                .dataEntrada(reserva.getDataEntrada())
+                .dataSaida(reserva.getDataSaida())
+                .build());
+    }
+
 
     @Override
     public void create(Reserva reserva) {

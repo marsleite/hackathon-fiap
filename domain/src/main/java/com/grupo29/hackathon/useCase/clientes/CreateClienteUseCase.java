@@ -3,8 +3,9 @@ package com.grupo29.hackathon.useCase.clientes;
 import com.grupo29.hackathon.gateway.ClienteGatewayRepository;
 import com.grupo29.hackathon.model.clientes.Cliente;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
+@Component
 public class CreateClienteUseCase {
     private ClienteGatewayRepository clienteGatewayRepository;
 
