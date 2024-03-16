@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ReservaController {
-
     private final CreateReservaUseCase createReservaUseCase;
     private final DeleteReservaUseCase deleteReservaUseCase;
 
@@ -25,9 +24,9 @@ public class ReservaController {
 
     @Autowired
     public ReservaController(CreateReservaUseCase createReservaUseCase,
-                            DeleteReservaUseCase deleteReservaUseCase,
-                            FindReservaUseCase findReservaUseCase,
-                            UpdateReservaUseCase updateReservaUseCase
+                             DeleteReservaUseCase deleteReservaUseCase,
+                             FindReservaUseCase findReservaUseCase,
+                             UpdateReservaUseCase updateReservaUseCase
     ) {
         this.createReservaUseCase = createReservaUseCase;
         this.deleteReservaUseCase = deleteReservaUseCase;
@@ -35,24 +34,24 @@ public class ReservaController {
         this.updateReservaUseCase = updateReservaUseCase;
     }
 
-        @PostMapping("/reservas")
-        public void createReserva(@RequestBody Reserva reserva) {
-          createReservaUseCase.create(reserva);
-        }
+    @PostMapping("/reservas")
+    public void createReserva(@RequestBody Reserva reserva) {
+        createReservaUseCase.create(reserva);
+    }
 
-        @DeleteMapping("/reservas/delete/{id}")
-        public void deleteReserva(@PathVariable String id) {
-            deleteReservaUseCase.execute(id);
+    @DeleteMapping("/reservas/delete/{id}")
+    public void deleteReserva(@PathVariable String id) {
+        deleteReservaUseCase.execute(id);
 
-        }
+    }
 
-        @GetMapping("/reservas/find/{id}")
-        public void findReserva(@PathVariable String id) {
-          findReservaUseCase.execute(id);
-        }
+    @GetMapping("/reservas/find/{id}")
+    public void findReserva(@PathVariable String id) {
+        findReservaUseCase.execute(id);
+    }
 
-        @PostMapping("/reservas/update")
-        public void updateReserva(@RequestBody Reserva reserva) {
-          updateReservaUseCase.execute(reserva);
-        }
+    @PostMapping("/reservas/update")
+    public void updateReserva(@RequestBody Reserva reserva) {
+        updateReservaUseCase.execute(reserva);
+    }
 }

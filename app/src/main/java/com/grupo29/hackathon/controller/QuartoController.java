@@ -6,12 +6,7 @@ import com.grupo29.hackathon.useCase.quartos.DeleteQuartoUseCase;
 import com.grupo29.hackathon.useCase.quartos.FindQuartoUseCase;
 import com.grupo29.hackathon.useCase.quartos.UpdateQuartoUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class QuartoController {
@@ -35,9 +30,9 @@ public class QuartoController {
     this.updateQuartoUseCase = updateQuartoUseCase;
   }
 
-    @PostMapping("/quartos")
-    public Quarto createQuarto(@RequestBody Quarto quarto) {
-      return createQuartoUseCase.create(quarto);
+    @PostMapping("/quartos/{predioId}")
+    public Quarto createQuarto(@RequestBody Quarto quarto, @PathVariable String predioId) {
+      return createQuartoUseCase.create(Long.valueOf(predioId), quarto);
     }
 
     @DeleteMapping("/quartos/delete/{id}")
@@ -51,9 +46,9 @@ public class QuartoController {
         return findQuartoUseCase.execute(id);
     }
 
-    @PostMapping("/quartos/update")
-    public Quarto updateQuarto(@RequestBody Quarto quarto) {
-        return updateQuartoUseCase.execute(quarto);
+    @PostMapping("/quartos/update/{predioId}")
+    public Quarto updateQuarto(@RequestBody Quarto quarto, @PathVariable String predioId) {
+        return updateQuartoUseCase.execute(Long.valueOf(predioId), quarto);
     }
 
 

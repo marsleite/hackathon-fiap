@@ -2,7 +2,7 @@ package com.grupo29.hackathon.gateway;
 
 import com.grupo29.hackathon.model.clientes.Cliente;
 
-public interface ClienteGatewayRepository {
+public interface ClienteRepositoryGateway {
 
     public Cliente create(Cliente Cliente);
 

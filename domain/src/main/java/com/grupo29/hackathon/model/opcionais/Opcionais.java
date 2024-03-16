@@ -1,11 +1,13 @@
 package com.grupo29.hackathon.model.opcionais;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Data
+@Builder
 public class Opcionais {
     List<Servico> servicos;
     List<Consumivel> consumiveis;

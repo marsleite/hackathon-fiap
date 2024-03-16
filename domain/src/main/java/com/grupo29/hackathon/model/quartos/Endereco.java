@@ -1,14 +1,9 @@
 package com.grupo29.hackathon.model.quartos;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
+@Builder
 public class Endereco {
     private Long id;
     private String rua;
