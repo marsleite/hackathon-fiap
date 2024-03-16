@@ -3,8 +3,9 @@ package com.grupo29.hackathon.useCase.quartos;
 import com.grupo29.hackathon.gateway.QuartoGatewayRepository;
 import com.grupo29.hackathon.model.quartos.Quarto;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
+@Component
 public class UpdateQuartoUseCase {
     private QuartoGatewayRepository quartoGatewayRepository;
 

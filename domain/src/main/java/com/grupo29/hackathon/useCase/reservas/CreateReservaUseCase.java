@@ -7,7 +7,9 @@ import com.grupo29.hackathon.model.reservas.Reserva;
 import com.grupo29.hackathon.utils.FieldUtils;
 
 import java.util.List;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreateReservaUseCase {
 
     private final ReservaRepositoryGateway reservaRepository;
